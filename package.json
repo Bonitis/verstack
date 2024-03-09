@@ -1,0 +1,20 @@
+{
+  "name": "verstack",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "pnpm --filter client",
+    "api": "pnpm --filter api",
+    "types": "pnpm --filter types",
+    "utils": "pnpm --filter utils"
+  },
+  "keywords": [],
+  "author": "Sean Rogers",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
