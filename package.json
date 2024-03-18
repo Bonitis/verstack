@@ -8,7 +8,12 @@
     "client": "pnpm --filter client",
     "api": "pnpm --filter api",
     "types": "pnpm --filter types",
-    "utils": "pnpm --filter utils"
+    "utils": "pnpm --filter utils",
+    "build": "pnpm -r --filter='./packages/*' run build",
+    "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
+    "format": "prettier --write --cache .",
+    "lint": "eslint --cache .",
+    "typecheck": "tsc -p scripts --noEmit && pnpm -r --parallel run typecheck"
   },
   "keywords": [],
   "author": "Sean Rogers",
