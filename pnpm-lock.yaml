@@ -172,12 +172,12 @@ importers:
 
   packages/utils:
     dependencies:
+      '@verstack/types':
+        specifier: workspace:../types
+        version: link:../types
       axios:
         specifier: ^1.6.8
         version: 1.6.8
-      types:
-        specifier: workspace:../types
-        version: link:../types
     devDependencies:
       typescript:
         specifier: ^5.2.2
