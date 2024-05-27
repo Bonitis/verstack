@@ -6,11 +6,11 @@
   "files": [
     "dist"
   ],
-  "main": "dist/utils.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc",
     "preview": "vite preview"
   },
   "devDependencies": {
