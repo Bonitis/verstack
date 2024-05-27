@@ -1,40 +1,26 @@
 {
   "version": 2,
-  "projects": [
+  "builds": [
     {
-      "name": "client",
-      "root": "apps/client",
-      "builds": [
-        {
-          "src": "package.json",
-          "use": "@vercel/static-build",
-          "config": {
-            "distDir": "dist"
-          }
-        }
-      ],
-      "routes": [
-        {
-          "src": "/(.*)",
-          "dest": "/dist/$1"
-        }
-      ]
+      "src": "apps/client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "apps/client/dist"
+      }
     },
     {
-      "name": "api",
-      "root": "apps/api",
-      "builds": [
-        {
-          "src": "package.json",
-          "use": "@vercel/node"
-        }
-      ],
-      "routes": [
-        {
-          "src": "/api/(.*)",
-          "dest": "src/app.ts"
-        }
-      ]
+      "src": "apps/api/package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "apps/api/src/app.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/apps/client/dist/$1"
     }
   ]
 }
