@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
     "client": "pnpm --filter client",
     "api": "pnpm --filter api",
     "types": "pnpm --filter types",
     "utils": "pnpm --filter utils",
-    "build": "pnpm -r --filter='./packages/*' run build",
-    "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
     "format": "prettier --write --cache .",
-    "lint": "eslint --cache .",
     "typecheck": "tsc -p scripts --noEmit && pnpm -r --parallel run typecheck"
   },
   "keywords": [],
@@ -21,5 +21,9 @@
   "type": "module",
   "devDependencies": {
     "prettier": "^3.2.5"
-  }
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

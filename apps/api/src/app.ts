@@ -6,8 +6,8 @@ import { User } from '@verstack/types'
 dotenv.config()
 
 const app: Express = express()
-const port = process.env.PORT || 5050
 
+app.use(express.json())
 app.use(cors())
 
 app.get('/', (req: Request, res: Response) => {
@@ -24,6 +24,4 @@ app.get('/user/me', (req: Request, res: Response) => {
   res.send(user)
 })
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`)
-})
+export default app

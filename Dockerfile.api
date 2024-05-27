@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+WORKDIR /workspace
+
+COPY pnpm-lock.yaml ./
+COPY package.json ./
+COPY pnpm-workspace.yaml ./
+
+RUN npm install -g pnpm
+COPY . .
+RUN pnpm install --filter './apps/api...'
+
+WORKDIR /workspace/apps/api
+RUN pnpm install
+
+EXPOSE 5001
+
+CMD ["pnpm", "dev"]
