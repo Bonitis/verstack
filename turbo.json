@@ -1,8 +1,10 @@
 {
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**"],
+      "dotEnv": [".env.local", ".env.production", ".env"]
     },
     "lint": {
       "outputs": []
