@@ -3,7 +3,7 @@ import { User } from '@verstack/types'
 
 export const getUser = async (): Promise<User> => {
   const res = await httpClient({
-    baseURL: 'http://localhost:5001',
+    baseURL: process.env.API_URL,
     url: '/user/me',
   })
   return res.data
