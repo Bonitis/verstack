@@ -1,52 +1,222 @@
-# Verstack Project
+# Verstack Monorepo
 
-## Description
+Welcome to the Verstack monorepo project! This repository contains both the client and API applications, organized within a monorepo structure using pnpm workspaces and Turborepo.
 
-Verstack is an innovative project leveraging JavaScript and TypeScript to provide a seamless experience in specific domains such as web development or data analysis. It includes two main packages: client and API, each with distinct functionalities.
+## Folder Structure
 
-## Getting Started
+The repository is organized as follows:
+
+```
+my-monorepo/
+├── apps/
+│   ├── client/
+│   │   ├── src/
+│   │   ├── dist/
+│   │   ├── package.json
+│   │   ├── vercel.json
+│   │   └── ...
+│   └── api/
+│       ├── api/
+│       ├── dist/
+│       ├── package.json
+│       ├── vercel.json
+│       └── ...
+├── packages/
+│   ├── types/
+│   │   ├── src/
+│   │   ├── dist/
+│   │   ├── package.json
+│   │   └── ...
+│   ├── utilities/
+│   │   ├── src/
+│   │   ├── dist/
+│   │   ├── package.json
+│   │   └── ...
+│   └── database/
+│       ├── src/
+│       ├── dist/
+│       ├── package.json
+│       └── ...
+├── turbo.json
+├── package.json
+├── pnpm-workspace.yaml
+├── docker-compose.yml
+└── .dockerignore
+```
+
+## Development Process
 
 ### Prerequisites
 
-Node.js
-pnpm
-Installation
-Clone the repository and install dependencies:
+- Node.js (version 14.x or later)
+- pnpm (version 6.x or later)
+- Docker (for running services locally)
+- Vercel CLI (for deployment)
 
-```bash
-git clone https://github.com/Bonitis/verstack.git
-cd verstack
-pnpm run build
-pnpm install
+### Initial Setup
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/your-username/verstack.git
+   cd verstack
+   ```
+
+2. **Install dependencies:**
+
+   Use pnpm to install all dependencies for the entire monorepo:
+
+   ```sh
+   pnpm install
+   ```
+
+### Running the Applications Locally
+
+#### Client Application
+
+1. **Navigate to the client directory:**
+
+   ```sh
+   cd apps/client
+   ```
+
+2. **Start the development server:**
+
+   ```sh
+   pnpm run dev
+   ```
+
+   The client application will be available at `http://localhost:3000`.
+
+#### API Application
+
+1. **Navigate to the API directory:**
+
+   ```sh
+   cd apps/api
+   ```
+
+2. **Start the development server:**
+
+   ```sh
+   pnpm run dev
+   ```
+
+   The API server will be available at `http://localhost:5001`.
+
+### Building the Applications
+
+#### Client Application
+
+1. **Navigate to the client directory:**
+
+   ```sh
+   cd apps/client
+   ```
+
+2. **Build the client application:**
+
+   ```sh
+   pnpm run build
+   ```
+
+   The build output will be located in the `dist` directory.
+
+#### API Application
+
+1. **Navigate to the API directory:**
+
+   ```sh
+   cd apps/api
+   ```
+
+2. **Build the API application:**
+
+   ```sh
+   pnpm run build
+   ```
+
+   The build output will be located in the `dist` directory.
+
+### Running Services with Docker
+
+1. **Start services using Docker Compose:**
+
+   ```sh
+   docker-compose up
+   ```
+
+   This will start the client, API, and database services.
+
+### Deployment to Vercel
+
+Each application has its own `vercel.json` configuration file for deployment.
+
+#### Client Application
+
+1. **Navigate to the client directory:**
+
+   ```sh
+   cd apps/client
+   ```
+
+2. **Deploy to Vercel:**
+
+   ```sh
+   vercel --prod
+   ```
+
+#### API Application
+
+1. **Navigate to the API directory:**
+
+   ```sh
+   cd apps/api
+   ```
+
+2. **Deploy to Vercel:**
+
+   ```sh
+   vercel --prod
+   ```
+
+### Project Configuration Files
+
+#### `turbo.json`
+
+```json
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": []
+    }
+  }
+}
 ```
 
-Running the Project
-Run the client:
+#### `pnpm-workspace.yaml`
 
-```bash
-pnpm run client dev
+```yaml
+packages:
+  - 'apps/*'
+  - 'packages/*'
 ```
 
-Run the API:
+### Contributing
 
-```bash
-pnpm run api dev
-```
+If you would like to contribute, please follow the [contribution guidelines](CONTRIBUTING.md).
 
-## Packages
+### License
 
-### Client
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Provides the user interface, built using technologies like React or Vue.
+---
 
-### API
-
-Serves as the backend, handling data processing and storage, developed with technologies such as Express or FastAPI.
-
-## Contributing
-
-Contributions are welcome! Please refer to the contribution guidelines.
-
-## License
-
-Licensed under the MIT License.
+Feel free to update this README with any additional information or instructions specific to your project.
